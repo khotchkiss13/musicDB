@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151209045539) do
+ActiveRecord::Schema.define(version: 20151209175627) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
@@ -41,6 +41,11 @@ ActiveRecord::Schema.define(version: 20151209045539) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "produced_by", force: :cascade do |t|
+    t.integer "individual_id"
+    t.integer "song_id"
+  end
+
   create_table "record_labels", force: :cascade do |t|
     t.string   "name"
     t.string   "founder"
@@ -65,6 +70,11 @@ ActiveRecord::Schema.define(version: 20151209045539) do
     t.string   "vertification"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "set_lists", force: :cascade do |t|
+    t.integer "show_id"
+    t.integer "track_id"
   end
 
   create_table "shows", force: :cascade do |t|
@@ -93,6 +103,12 @@ ActiveRecord::Schema.define(version: 20151209045539) do
     t.integer  "song_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "release_id"
+  end
+
+  create_table "written_by", force: :cascade do |t|
+    t.integer "individual_id"
+    t.integer "song_id"
   end
 
 end
