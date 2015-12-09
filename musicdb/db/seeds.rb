@@ -12,16 +12,16 @@ ed_sheeran = RSpotify::Artist.search(test[1][0]).first
 
 test.each do |t|
   if t[1] == 'group'
-    Group.create!({:name => t[0], :formation_date => null, :disband_date => null})
+    Group.create!({:name => t[0], :formation_date => nil, :disband_date => nil})
   else
-    Individuals.create!({:name => t[0], :formation_date => null, :disband_date => null})
+    Individual.create!({:name => t[0]})
   end
 end
 
 arctic_monkeys.albums.each do |a|
+  album = Release.create!({:name => a.name, :date => a.release_date})
   a.tracks.each do |t|
-    Song.create!({:release_id => null, :name => t.name, :genre => a.genres, :length => duration_ms, :bpm => null, :medium => null})
-    Track.create!(:track_number => t.track_number, :song_id => null})
+    song = Song.create!({:release_id => nil, :name => t.name, :genre => a.genres, :length => t.duration_ms, :bpm => nil, :medium => nil})
+    Track.create!({:track_number => t.track_number, :song_id => song.id})
   end
 end
-
