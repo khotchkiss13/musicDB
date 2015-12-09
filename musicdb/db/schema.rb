@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151209181836) do
+ActiveRecord::Schema.define(version: 20151209183738) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
@@ -88,7 +88,6 @@ ActiveRecord::Schema.define(version: 20151209181836) do
   end
 
   create_table "songs", force: :cascade do |t|
-    t.integer  "release_id"
     t.string   "name"
     t.string   "genre"
     t.integer  "length"
