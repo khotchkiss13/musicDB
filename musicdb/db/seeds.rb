@@ -13,7 +13,7 @@ individuals = [{name: 'Ed Sheeran', birth_date: '1991-02-17', primary_instrument
               {name: 'Cliff Burton', birth_date: '1962-02-10', primary_instrument: 'Bass Guitar', vocals: 'Background'},
               {name: 'Jason Newsted', birth_date: '1963-03-04', primary_instrument: 'Bass Guitar', vocals: 'Background'},
               {name: 'Robert Trujillo', birth_date: '1964-08-23', primary_instrument: 'Bass Guitar', vocals: 'Background'},
-              {name: 'Marhsall Mathews III', birth_date: '1972-10-17', primary_instrument: 'Keyboard', secondary_instrument: 'Sampler', vocals: 'Lead'}
+              {name: 'Marshall Mathews III', birth_date: '1972-10-17', primary_instrument: 'Keyboard', secondary_instrument: 'Sampler', vocals: 'Lead'}
               ]
 groups = [{name: 'Ed Sheeran', formation_date: '2005-01-01', disband_date: nil},
           {name: 'Metallica', formation_date: '1981-01-01', disband_date: nil},
@@ -29,7 +29,7 @@ members = {'Ed Sheeran'=> [{individual_id: Individual.where(name: 'Ed Sheeran').
                          {individual_id: Individual.where(name: 'Cliff Burton').first.id, start_date: '1982-01-01', end_date: '1986-09-27'},
                          {individual_id: Individual.where(name: 'Jason Newsted').first.id, start_date: '1987-01-01', end_date: '2001-01-01'},
                          {individual_id: Individual.where(name: 'Robert Trujillo').first.id, start_date: '2003-01-01', end_date: nil}],
-           'Eminem'=> [{individual_id: Individual.where(name: 'Marhsall Mathews III').first.id, start_date: '1992-01-01', end_date: nil}]
+           'Eminem'=> [{individual_id: Individual.where(name: 'Marshall Mathews III').first.id, start_date: '1992-01-01', end_date: nil}]
 
          }
 
