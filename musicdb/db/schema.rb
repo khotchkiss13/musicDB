@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151209045539) do
+ActiveRecord::Schema.define(version: 20151209183738) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
@@ -34,11 +34,15 @@ ActiveRecord::Schema.define(version: 20151209045539) do
   create_table "members", force: :cascade do |t|
     t.integer  "individual_id"
     t.integer  "group_id"
-    t.string   "name"
     t.datetime "start_date"
     t.datetime "end_date"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "produced_by", force: :cascade do |t|
+    t.integer "individual_id"
+    t.integer "song_id"
   end
 
   create_table "record_labels", force: :cascade do |t|
@@ -67,6 +71,11 @@ ActiveRecord::Schema.define(version: 20151209045539) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "set_lists", force: :cascade do |t|
+    t.integer "show_id"
+    t.integer "track_id"
+  end
+
   create_table "shows", force: :cascade do |t|
     t.string   "name"
     t.string   "venue"
@@ -75,10 +84,10 @@ ActiveRecord::Schema.define(version: 20151209045539) do
     t.integer  "total_profit"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "group_id"
   end
 
   create_table "songs", force: :cascade do |t|
-    t.integer  "release_id"
     t.string   "name"
     t.string   "genre"
     t.integer  "length"
@@ -93,6 +102,12 @@ ActiveRecord::Schema.define(version: 20151209045539) do
     t.integer  "song_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "release_id"
+  end
+
+  create_table "written_by", force: :cascade do |t|
+    t.integer "individual_id"
+    t.integer "song_id"
   end
 
 end
