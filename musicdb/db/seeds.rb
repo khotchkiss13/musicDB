@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'rspotify'
+test = RSpotify::Artist.search('Arctic Monkeys')
+arctic_monkeys = test.first # search should return a list?
+
+
