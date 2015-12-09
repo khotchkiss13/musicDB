@@ -1,0 +1,2 @@
+class RecordLabelsController < ApplicationController
+end
