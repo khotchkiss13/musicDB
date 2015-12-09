@@ -5,11 +5,8 @@ class Track < ActiveRecord::Base
 
   def name
     self.song.name
-  def
-    t.string   "genre"
-    t.integer  "length"
-    t.integer  "bpm"
-    t.string   "medium"
+  end
+  
   def genre
     self.song.genre
   end
