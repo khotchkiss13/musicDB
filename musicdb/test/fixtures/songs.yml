@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  release_id: 1
+  name: MyString
+  genre: MyString
+  length: 1
+  bpm: 1
+  medium: MyString
+
+two:
+  release_id: 1
+  name: MyString
+  genre: MyString
+  length: 1
+  bpm: 1
+  medium: MyString
