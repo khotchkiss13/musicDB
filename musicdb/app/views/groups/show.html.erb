@@ -23,6 +23,7 @@
             <% @members.each do |member| %>
                 <%= link_to member.name, individual_path(member.ind), :class => "mdb-section-link" %><br>
             <% end %>
+            <%= link_to "+ Add Member", '/welcome/input', :class => "mdb-add-link", :method => :get %>
 
             <div class="mdb-section-info">Releases:</div>
             <% @group.releases.each do |release| %>

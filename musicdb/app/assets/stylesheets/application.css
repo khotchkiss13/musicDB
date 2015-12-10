@@ -624,6 +624,15 @@ a img{
   font-weight: 400;
   font-size: 14px;
   color: #3f51b5;
+  text-decoration: none;
+}
+
+.mdb-add-link {
+  font-weight: 300;
+  font-size: 13px;
+  margin-top: 2px;
+  color: #9e9e9e;
+  text-decoration: none;
 }
 
 .mdb-submit-note {

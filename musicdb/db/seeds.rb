@@ -56,7 +56,6 @@ individuals = [{name: 'Ed Sheeran', birth_date: '1991-02-17', primary_instrument
               {name: 'Lionel Brockman Richie, Jr.', birth_date: '1949-06-20', primary_instrument: 'Piano', vocals: 'Lead'},
               {name: 'Thomas Luther Bryan', birth_date: '1976-07-17', primary_instrument: 'Guitar', vocals: 'Lead'}
 
-
               ]
 
 groups = [{name: 'Ed Sheeran', formation_date: '2005-01-01', disband_date: nil},

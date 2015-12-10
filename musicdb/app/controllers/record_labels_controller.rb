@@ -6,12 +6,12 @@ class RecordLabelsController < ApplicationController
 	def create
 		@record_label = RecordLabel.new(record_label_params)
 		if !@record_label.valid?
-			redirect_to welcome_input_path
+			redirect_to input_data_path
 			return
 		end
 
 		if !@record_label.save
-			redirect_to welcome_input_path
+			redirect_to input_data_path
 			return
 		end
 		redirect_to record_label_path(@record_label)

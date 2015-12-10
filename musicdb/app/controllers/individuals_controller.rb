@@ -6,12 +6,12 @@ class IndividualsController < ApplicationController
 	def create
 		@individual = Individual.new(individual_params)
 		if !@individual.valid?
-			redirect_to welcome_input_path
+			redirect_to input_data_path
 			return
 		end
 
 		if !@individual.save
-			redirect_to welcome_input_path
+			redirect_to input_data_path
 			return
 		end
 		redirect_to individual_path(@individual)

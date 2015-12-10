@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
-  root 'welcome#index'
-
-  get 'welcome/input'
+  root 'search#index'
+  get 'input/data' => 'input#data'
+  get 'search/advanced' => 'search#advanced'
+  get 'search/results' => 'search#results'
   resources :groups
   resources :individuals
   resources :record_labels

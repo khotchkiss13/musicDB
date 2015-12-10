@@ -6,12 +6,12 @@ class ShowsController < ApplicationController
 	def create
 		@show = Show.new(show_params)
 		if !@show.valid?
-			redirect_to welcome_input_path
+			redirect_to input_data_path
 			return
 		end
 
 		if !@show.save
-			redirect_to welcome_input_path
+			redirect_to input_data_path
 			return
 		end
 		redirect_to show_path(@show)
