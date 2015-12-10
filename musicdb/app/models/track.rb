@@ -4,6 +4,9 @@ class Track < ActiveRecord::Base
   has_and_belongs_to_many :shows, :join_table => :set_lists
 
   def name
+    if self.song.nil?
+      return nil.to_s
+    end
     self.song.name
   end
 
