@@ -4,7 +4,11 @@ class Song < ActiveRecord::Base
   has_and_belongs_to_many :producers, class_name: "Individual",  :join_table => :produced_by
 
   def artist
-    track = self.tracks.first
-    track.release.group.name
+    self.tracks.each do |track|
+      if !track.release.nil? && !track.release.group.nil?
+        return track.release.group.name
+      end
+    end
+    return "None"
   end
 end

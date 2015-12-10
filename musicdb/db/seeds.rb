@@ -60,7 +60,7 @@ groups.each do |artist|
   members[artist[:name]].each { |member| group.members.create!(member) }
   search = RSpotify::Artist.search(artist[:name]).first
   search.albums.each do |a| # for each of their albums
-    release = Release.create!({:name => a.name, :date => a.release_date})
+    release = group.releases.create!({:name => a.name, :date => a.release_date})
     a.tracks.each do |t| # for each of their tracks
       song = Song.create!({:name => t.name, :genre => a.genres, :length => t.duration_ms, :bpm => nil, :medium => nil})
       release.tracks.create!({:track_number => t.track_number, :song_id => song.id})
@@ -73,19 +73,32 @@ groups.each do |artist|
     if setlist["artist"]["name"] == group.name && !setlist.compact["sets"].nil?
       show = group.shows.create({:name => setlist["tour"], :venue => setlist["venue"]["name"], :date => setlist["eventDate"]})
       i = 1
-      setlist.compact["sets"]["set"].each do |song|
-        db_songs = Song.where(name: song["name"])
-        actual_song = nil
-        db_songs.each do |db_song|
-          if db_song.artist == group[name]
-            actual_song = db_song
-            break
+      setlist.compact["sets"]["set"].each do |set|
+        if !set.respond_to?(:key)
+          if set[1].respond_to?(:key)
+            set = {"song"=>[set[1]]}
+          else
+            set = {"song"=>set[1]}
           end
         end
-        if actual_song.nil?
-          actual_song = Song.create(name: song["name"])
+        if set["song"].respond_to?(:key)
+          set["song"] = [set["song"]]
         end
-        show.tracks.create({:track_number => i, :song_id => actual_song.id})
+        set["song"].each do |song|
+          db_songs = Song.where(name: song["name"])
+          actual_song = nil
+          db_songs.each do |db_song|
+            if db_song.artist.include?(group.name)
+              actual_song = db_song
+              break
+            end
+          end
+          if actual_song.nil?
+            actual_song = Song.create(name: song["name"])
+          end
+          show.tracks.create({:track_number => i, :song_id => actual_song.id})
+          i += 1
+        end
       end
     end
   end
