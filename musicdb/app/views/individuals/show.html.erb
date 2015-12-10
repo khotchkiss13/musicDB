@@ -1,0 +1,44 @@
+<body bgcolor="f5f5f5">
+    <div class="mdl-grid">
+      <div class="mdl-layout__content">
+        <a name="top"></a>
+
+        <div class="mdb-input-form">
+          <div class="mdb-info-title">
+            <div class="mdb-large-text"><%= @individual.name %></div>
+            <div class="mdb-result-id">Artist ID: <%= @individual.id %></div>
+          </div>
+          <div class="mdb-line-separator" style="margin-top: 10px; margin-bottom: 30px"></div>
+          <div class="mdb-info-sections">
+            <div class="mdb-section-title mdl-typography--text-uppercase">About</div>
+            <div class="mdb-section-info">Birth Date:</div>
+            <div class="mdb-section-desc"><%= @individual.birth_date.to_formatted_s(:long) %></div>
+            <div class="mdb-section-info">Primary Instrument:</div>
+            <div class="mdb-section-desc"><%= @individual.primary_instrument %></div>
+            <div class="mdb-section-info">Secondary Instrument:</div>
+            <div class="mdb-section-desc"><%= @individual.secondary_instrument %></div>
+            <div class="mdb-section-info">Vocals:</div>
+            <div class="mdb-section-desc"><%= @individual.vocals %></div>
+
+            <div class="mdb-section-title mdl-typography--text-uppercase" style="margin-top: 35px">Other</div>
+            <div class="mdb-section-info">Member of:</div>
+            <% @members.each do |member| %>
+                <%= link_to member.group.name, group_path(member.group), :class => "mdb-section-link" %><br>
+            <% end %>
+
+            <div class="mdb-section-info">Songs written:</div>
+            <% @individual.written_songs.each do |written_song| %>
+                <%= link_to written_song.name, song_path(written_song), :class => "mdb-section-link" %><br>
+            <% end %>
+
+            <div class="mdb-section-info">Songs produced:</div>
+            <% @individual.produced_songs.each do |produced_song| %>
+                <%= link_to produced_song.name, song_path(produced_song), :class => "mdb-section-link" %><br>
+            <% end %>
+
+          </div>
+            
+        </div>
+      </div>
+    </div>
+</body>

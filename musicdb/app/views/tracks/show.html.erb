@@ -1,0 +1,40 @@
+<div class="mdl-grid">
+  <div class="mdl-layout__content">
+    <a name="top"></a>
+
+    <div class="mdb-input-form">
+      <div class="mdb-info-title">
+        <div class="mdb-large-text"><%= @track.name %></div>
+        <div class="mdb-result-id">Track ID: <%= @track.id %></div>
+      </div>
+      <div class="mdb-line-separator" style="margin-top: 10px; margin-bottom: 30px"></div>
+      <div class="mdb-info-sections">
+        <div class="mdb-section-title mdl-typography--text-uppercase">About</div>
+        <div class="mdb-section-info">Artist:</div>
+        <%= link_to @track.release.group.name, group_path(@track.release.group), :class => "mdb-section-link" %>
+        <div class="mdb-section-info">Release:</div>
+        <%= link_to @track.release.name, release_path(@track.release_id), :class => "mdb-section-link" %>
+        <div class="mdb-section-desc">Track No: <%= @track.track_number %></div>
+        <div class="mdb-section-info">Genre:</div>
+        <div class="mdb-section-desc"><%= @track.genre %></div>
+        <div class="mdb-section-info">Length:</div>
+        <div class="mdb-section-desc"><%= @track.length %></div>
+        <div class="mdb-section-info">Medium:</div>
+        <div class="mdb-section-desc"><%= @track.medium %></div>
+
+        <div class="mdb-section-title mdl-typography--text-uppercase" style="margin-top: 35px">Other</div>
+        <div class="mdb-section-info">Written by:</div>
+        <% @track.song.writers.each do |writer| %>
+          <%= link_to writer.name, individual_path(writer), :class => "mdb-section-link" %><br>
+        <% end %>
+
+        <div class="mdb-section-info">Produced by:</div>
+        <% @track.song.producers.each do |producer| %>
+          <%= link_to producer.name, individual_path(producer), :class => "mdb-section-link" %><br>
+        <% end %>
+
+      </div>
+        
+    </div>
+  </div>
+</div>

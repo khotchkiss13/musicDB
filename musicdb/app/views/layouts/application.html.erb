@@ -2,11 +2,62 @@
 <html>
 <head>
   <title>Musicdb</title>
+  <%= stylesheet_link_tag    'material.min', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'material.min', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'manifest', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'mdb-scripts', 'data-turbolinks-track' => true %>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <%= csrf_meta_tags %>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Search artists, songs, and more!">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="msapplication-TileColor" content="#ffffff">
+
+  <style>
+  #view-source {
+    position: fixed;
+    display: block;
+    right: 0;
+    bottom: 0;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    z-index: 900;
+  }
+  </style>
+
 </head>
 <body>
+
+ 	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+	  <header class="mdb-header mdl-layout__header">
+	    <div class="mdl-layout__header-row">
+	      <!-- Title -->
+	      <%= link_to "musicDB", '/welcome/index', :class => "mdl-layout-title", :method => :get %>
+	      <!-- Add spacer, to align navigation to the right -->
+	      <div class="mdl-layout-spacer"></div>
+	      <!-- Navigation. We hide it in small screens. -->
+        <div class="search-box">
+          <div class="search-container">
+            <input type="search" id="search" placeholder="Search musicDB" />
+          </div>
+        </div>
+        <div class="mdl-layout-spacer"></div>
+	      <nav class="mdl-navigation mdl-layout--large-screen-only">
+	        <%= link_to "INPUT DATA", '/welcome/input', :class => "mdl-navigation__link", :method => :get %>
+	      </nav>
+	    </div>
+	  </header>
+	</div>
 
 <%= yield %>
 

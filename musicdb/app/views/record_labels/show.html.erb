@@ -1,0 +1,40 @@
+<body bgcolor="f5f5f5">
+    <div class="mdl-grid">
+      <div class="mdl-layout__content">
+        <a name="top"></a>
+
+        <div class="mdb-input-form">
+          <div class="mdb-info-title">
+            <div class="mdb-large-text"><%= @record_label.name %></div>
+            <div class="mdb-result-id">Label ID: <%= @record_label.name %></div>
+          </div>
+          <div class="mdb-line-separator" style="margin-top: 10px; margin-bottom: 30px"></div>
+          <div class="mdb-info-sections">
+            <div class="mdb-section-title mdl-typography--text-uppercase">About</div>
+            <div class="mdb-section-info">Founder:</div>
+            <% @record_label.founder.each do |founder| %>
+                <%= founder.name, :class => "mdb-section-link" %><br>
+            <% end %>
+
+            <div class="mdb-section-info">Location:</div>
+            <div class="mdb-section-desc"><%= @record_label.location %></div></div>
+            <div class="mdb-section-info">CEO:</div>
+            <div class="mdb-section-desc"><%= @record_label.ceo %></div></div>
+            <div class="mdb-section-info">Date Founded:</div>
+            <div class="mdb-section-desc"><%= @record_label.date_founded.to_formatted_s(:long) %></div></div>
+            <div class="mdb-section-info">Date Dissolved:</div>
+            <% if !@record_label.date_dissolved.nil? %>
+              <div class="mdb-section-desc"><%= @record_label.date_dissolved.to_formatted_s(:long) %></div></div>
+            <% end %>
+
+            <div class="mdb-section-title mdl-typography--text-uppercase" style="margin-top: 35px">Other</div>
+            <% @record_label.groups.each do |group| %>
+                <%= link_to group.name, group_path(group), :class => "mdb-section-link" %><br>
+            <% end %>
+
+          </div>
+            
+        </div>
+      </div>
+    </div>
+</body>
