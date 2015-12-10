@@ -30,15 +30,77 @@
               </div>
             <div class="mdb-line-separator" style="margin-top: 0px"></div>
 
-            <div id="group-form" class="mdb-form mdl-tabs__panel is-active" style="margin-left:100px"> 
-
-              <% @groups.each do |group| %>
-                <div class="mdb-result">
-                  <%= link_to group.name, group_path(group), :class => "mdb-result-title" %>
-                  <div class="mdb-result-id">Group ID: <%= group.id %></div>
-                </div>
+            <div id="group-form" class="mdb-form mdl-tabs__panel is-active">
+              <% if !@groups.nil? %>
+                <% @groups.each do |group| %>
+                  <div class="mdb-result">
+                    <%= link_to group.name, group_path(group), :class => "mdb-result-title" %>
+                    <div class="mdb-result-id">Group ID: <%= group.id %></div>
+                  </div>
+                <% end %>
               <% end %>
             </div>
+
+            <div id="individual-form" class="mdb-form mdl-tabs__panel"> 
+              <% if !@individuals.nil? %>
+                <% @individuals.each do |individual| %>
+                  <div class="mdb-result">
+                    <%= link_to individual.name, individual_path(individual), :class => "mdb-result-title" %>
+                    <div class="mdb-result-id">Artist ID: <%= individual.id %></div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+
+            <div id="song-form" class="mdb-form mdl-tabs__panel"> 
+              <% if !@songs.nil? %>
+                <% @songs.each do |song| %>
+                  <div class="mdb-result">
+                    <%= link_to song.name, song_path(song), :class => "mdb-result-title" %>
+                    <div class="mdb-result-id">Song ID: <%= song.id %></div>
+                    <% if !song.tracks.first.release.nil? %>
+                      <% if !song.tracks.first.release.group.nil? %>
+                        <div class="mdb-result-id">Artist: <%= song.tracks.first.release.group.name %> </div>
+                      <% end %>
+                    <% end %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+
+            <div id="release-form" class="mdb-form mdl-tabs__panel"> 
+              <% if !@releases.nil? %>
+                <% @releases.each do |release| %>
+                  <div class="mdb-result">
+                    <%= link_to release.name, release_path(release), :class => "mdb-result-title" %>
+                    <div class="mdb-result-id">Release ID: <%= release.id %></div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+
+            <div id="show-form" class="mdb-form mdl-tabs__panel"> 
+              <% if !@shows.nil? %>
+                <% @shows.each do |show| %>
+                  <div class="mdb-result">
+                    <%= link_to show.name, show_path(show), :class => "mdb-result-title" %>
+                    <div class="mdb-result-id">Show ID: <%= show.id %></div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+
+            <div id="record-label-form" class="mdb-form mdl-tabs__panel"> 
+              <% if !@labels.nil? %>
+                <% @labels.each do |label| %>
+                  <div class="mdb-result">
+                    <%= link_to label.name, label_path(label), :class => "mdb-result-title" %>
+                    <div class="mdb-result-id">Record Label ID: <%= label.id %></div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+
           </div>
         </div>
       </div>
