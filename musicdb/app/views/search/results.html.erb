@@ -1,0 +1,47 @@
+<body bgcolor="#f5f5f5">
+
+  <div class="mdl-grid">
+      <div class="mdl-layout__content">
+        <a name="top"></a>
+
+          <div class="mdb-input-form">
+
+            <div class="mdb-results-search">
+              <div class="search-box">
+                  <div class="search-container">
+                    <input type="search" id="search" placeholder="Search musicDB" />
+                  </div>
+              </div>
+
+              <div class="form-button" style="padding-top: 30px; padding-bottom: 20px; clear: both">
+                <a href="results.html" id="submit-button" class="mdl-button mdb-button">SEARCH</a>
+              </div>
+            </div>
+            <a class="mdb-link" href="advsearch.html" style="float: right; margin-right: 105px; margin-top: -13px">Advanced Search</a>
+
+            <div class="mdb-results-tabs mdl-tabs mdl-js-tabs">
+              <div class="mdl-tabs__tab-bar">
+                <a href="#group-form" class="mdl-tabs__tab is-active">Group</a>
+                <a href="#individual-form" class="mdl-tabs__tab">Individual</a>
+                <a href="#song-form" class="mdl-tabs__tab">Song</a>
+                <a href="#release-form" class="mdl-tabs__tab">Release</a>
+                <a href="#show-form" class="mdl-tabs__tab">Show</a>
+                <a href="#record-label-form" class="mdl-tabs__tab">Record Label</a>
+              </div>
+            <div class="mdb-line-separator" style="margin-top: 0px"></div>
+
+            <div id="group-form" class="mdb-form mdl-tabs__panel is-active" style="margin-left:100px"> 
+
+              <% @groups.each do |group| %>
+                <div class="mdb-result">
+                  <%= link_to group.name, group_path(group), :class => "mdb-result-title" %>
+                  <div class="mdb-result-id">Group ID: <%= group.id %></div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+</body>
