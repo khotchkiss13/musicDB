@@ -1,0 +1,329 @@
+<body bgcolor="f5f5f5">
+  <div id="submit-note" class="mdb-submit-note">
+    <div class="mdb-submit-card mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title">
+      <div class="title-part">
+        <h2 class="mdl-card__title-text" style="color: #3f51b5; font-weight: 500">Thank you for your submission!</h2>
+      </div>
+    </div>
+    <div class="mdl-card__actions">
+      <div class="action-part">
+        <a href='/welcome/input' id="submit-ok" class="mdl-button mdb-button">
+          OK
+        </a>
+      </div>
+    </div>
+    </div>
+  </div>
+
+
+  <div class="mdl-grid">
+      <div class="mdl-layout__content">
+        <a name="top"></a>
+
+          <div class="mdb-input-form">
+            <div class="mdb-form-title mdl-typography--text-uppercase">Input Data</div>
+            <div class="mdl-tabs mdl-js-tabs">
+              <div class="mdl-tabs__tab-bar">
+                <a href="#group-form" class="mdl-tabs__tab is-active">Group</a>
+                <a href="#individual-form" class="mdl-tabs__tab">Individual</a>
+                <a href="#song-form" class="mdl-tabs__tab">Song</a>
+                <a href="#release-form" class="mdl-tabs__tab">Release</a>
+                <a href="#show-form" class="mdl-tabs__tab">Show</a>
+                <a href="#record-label-form" class="mdl-tabs__tab">Record Label</a>
+              </div>
+            
+
+            <div class="mdb-line-separator"></div>
+
+            <div id="group-form" class="mdb-form mdl-tabs__panel is-active"> 
+              <%= form_for(@group) do |g| %>
+                <div class="mdb-individual-fields">
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="groupname">
+                    <label class="mdb-form-field mdl-textfield__label" for="groupname">Group Name</label> -->
+                    <%= g.label :name, 'Group Name' %>:
+                    <%= g.text_field :name %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+<!--                     <input class="mdl-textfield__input" type="text" id="formation">
+                    <label class="mdb-form-field mdl-textfield__label" for="formation">Formation Date (MM/DD/YYYY)</label> -->
+                    <%= g.label :formation_date %>:
+                    <%= g.date_select :formation_date, :start_year => 1900, :end_year => 2015, :order => [:month, :day, :year], :default => {:day => 1, :month => 1} %><br>
+
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+<!--                     <input class="mdl-textfield__input" type="text" id="disband">
+                    <label class="mdb-form-field mdl-textfield__label" for="disband">Disband Date (MM/DD/YYYY)</label> -->
+                    <%= g.label :disband_date %>:
+                    <%= g.date_select :disband_date, :start_year => 1900, :end_year => 2015, :order => [:month, :day, :year], :include_blank => true %><br>
+
+                  </div>
+                  <div class="form-button">
+                    <%= g.submit "SUBMIT", :class => "mdl-button mdb-button" %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+
+            <div id="individual-form" class="mdb-form mdl-tabs__panel">
+              <%= form_for(@individual) do |i| %>
+                <div class="mdb-individual-fields">
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield mdb-name-field" style="margin-right: 16px">
+                    <!-- <input class="mdl-textfield__input" type="text" id="fname">
+                    <label class="mdb-form-field mdl-textfield__label" for="fname">First Name</label>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield mdb-name-field" style="margin-right: 16px">
+                    <input class="mdl-textfield__input mdb-name-field-middle" type="text" id="mname">
+                    <label class="mdb-form-field mdl-textfield__label" for="mname">Middle Name</label>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield mdb-name-field">
+                    <input class="mdl-textfield__input" type="text" id="lname">
+                    <label class="mdb-form-field mdl-textfield__label" for="lname">Last Name</label> -->
+                    <%= i.label :name, 'Name' %>:
+                    <%= i.text_field :name %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="birthdate">
+                    <label class="mdb-form-field mdl-textfield__label" for="birthdate">Birth Date (MM/DD/YYYY)</label> -->
+                    <%= i.label :birth_date %>:
+                    <%= i.date_select :birth_date, :start_year => 1900, :end_year => 2015, :order => [:month, :day, :year], :default => {:day => 1, :month => 1}  %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="primary">
+                    <label class="mdb-form-field mdl-textfield__label" for="primary">Primary Instrument</label> -->
+                    <%= i.label :primary_instrument, 'Primary Instrument' %>:
+                    <%= i.text_field :primary_instrument %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="secondary">
+                    <label class="mdb-form-field mdl-textfield__label" for="secondary">Secondary</label> -->
+                    <%= i.label :secondary_instrument, 'Secondary Instrument' %>:
+                    <%= i.text_field :secondary_instrument %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="vocals">
+                    <label class="mdb-form-field mdl-textfield__label" for="vocals">Vocals</label> -->
+                    <%= i.label :vocals, 'Vocals' %>:
+                    <%= i.text_field :vocals %><br>
+                  </div>
+
+<!--                   <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="member-checkbox">
+                    <input type="checkbox" id="member-checkbox" class="mdl-checkbox__input"/>
+                    <span class="mdl-checkbox__label" style="font-size:15px">Member of a group</span>
+                  </label> -->
+
+                  <!-- <div id="member-form" class="mdb-form" style="display:none; margin-bottom: 10px">
+                    <form action="#">
+                      <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="groupid">
+                        <label class="mdb-form-field mdl-textfield__label" for="groupid">Group ID</label>
+                      </div>
+                      <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="startdate">
+                        <label class="mdb-form-field mdl-textfield__label" for="startdate">Start Date (MM/DD/YYYY)</label>
+                      </div>
+                      <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="enddate">
+                        <label class="mdb-form-field mdl-textfield__label" for="enddate">End Date (MM/DD/YYYY)</label>
+                      </div>
+                    </form>
+                  </div> -->
+                  <div class="form-button">
+                    <%= i.submit "SUBMIT", :class => "mdl-button mdb-button" %>
+                  </div>
+                  <!-- <div id="submitted" class="mdb-submitted" style="display: none">
+                    <div class="mdb-large-text">Submitted!</div>
+                  </div> -->
+                </div>
+              <% end %>
+            </div>
+
+            <div id="song-form" class="mdb-form mdl-tabs__panel"> 
+              <%= form_for(@song) do |s| %>
+                <div class="mdb-individual-fields">
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="songname">
+                    <label class="mdb-form-field mdl-textfield__label" for="songname">Song Name</label> -->
+                    <%= s.label :name, 'Song Name' %>:
+                    <%= s.text_field :name %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="genre">
+                    <label class="mdb-form-field mdl-textfield__label" for="genre">Genre</label> -->
+                    <%= s.label :genre, 'Genre' %>:
+                    <%= s.text_field :genre %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="length">
+                    <label class="mdb-form-field mdl-textfield__label" for="length">Length</label> -->
+                    <%= s.label :length, 'Length' %>:
+                    <%= s.text_field :length %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="bpm">
+                    <label class="mdb-form-field mdl-textfield__label" for="bpm">Beats per minute</label> -->
+                    <%= s.label :bpm, 'Beats per minute' %>:
+                    <%= s.text_field :bpm %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="medium">
+                    <label class="mdb-form-field mdl-textfield__label" for="medium">Medium</label> -->
+                    <%= s.label :medium, 'Medium' %>:
+                    <%= s.text_field :medium %><br>
+                  </div>
+                  <div class="form-button">
+                    <%= s.submit "SUBMIT", :class => "mdl-button mdb-button" %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+
+            <div id="release-form" class="mdb-form mdl-tabs__panel"> 
+              <%= form_for(@release) do |r| %>
+                <div class="mdb-individual-fields">
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="releasename">
+                    <label class="mdb-form-field mdl-textfield__label" for="releasename">Release Name</label> -->
+                    <%= r.label :name, 'Release Name' %>:
+                    <%= r.text_field :name %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="date">
+                    <label class="mdb-form-field mdl-textfield__label" for="date">Date</label> -->
+                    <%= r.label :date, 'Release date' %>:
+                    <%= r.date_select :date, :start_year => 1900, :end_year => 2015, :order => [:month, :day, :year], :default => {:day => 1, :month => 1} %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="mediatype">
+                    <label class="mdb-form-field mdl-textfield__label" for="mediatype">Media Type</label> -->
+                    <%= r.label :media_type, 'Media Type' %>:
+                    <%= r.text_field :media_type %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="totallength">
+                    <label class="mdb-form-field mdl-textfield__label" for="totallength">Total Length</label> -->
+                    <%= r.label :total_length, 'Total Length' %>:
+                    <%= r.text_field :total_length %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="copies">
+                    <label class="mdb-form-field mdl-textfield__label" for="copies">Copies Sold</label> -->
+                    <%= r.label :copies_sold, 'Copies Sold' %>:
+                    <%= r.text_field :copies_sold %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="profit">
+                    <label class="mdb-form-field mdl-textfield__label" for="profit">Total Profit</label> -->
+                    <%= r.label :total_profit, 'Total Profit' %>:
+                    <%= r.text_field :total_profit %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="medium">
+                    <label class="mdb-form-field mdl-textfield__label" for="medium">Medium</label> -->
+                    <%= r.label :medium, 'Medium' %>:
+                    <%= r.text_field :medium %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="certification">
+                    <label class="mdb-form-field mdl-textfield__label" for="certification">Certification</label> -->
+                    <%= r.label :certification, 'Certification' %>:
+                    <%= r.text_field :certification %><br>
+                  </div>
+                  <div class="form-button">
+                    <%= r.submit "SUBMIT", :class => "mdl-button mdb-button" %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+
+            <div id="show-form" class="mdb-form mdl-tabs__panel"> 
+              <%= form_for(@show) do |sh| %>
+                <div class="mdb-individual-fields">
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="showname">
+                    <label class="mdb-form-field mdl-textfield__label" for="showname">Show Name</label> -->
+                    <%= sh.label :name, 'Show Name' %>:
+                    <%= sh.text_field :name %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="venue">
+                    <label class="mdb-form-field mdl-textfield__label" for="venue">Venue</label> -->
+                    <%= sh.label :venue, 'Venue' %>:
+                    <%= sh.text_field :venue %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <%= sh.label :date %>:
+                    <%= sh.date_select :date, :start_year => 1900, :end_year => 2015, :order => [:month, :day, :year], :default => {:day => 1, :month => 1} %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="tickets">
+                    <label class="mdb-form-field mdl-textfield__label" for="tickets">Tickets Sold</label> -->
+                    <%= sh.label :tickets_sold, 'Tickets Sold' %>:
+                    <%= sh.text_field :tickets_sold %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="showprofit">
+                    <label class="mdb-form-field mdl-textfield__label" for="showprofit">Total Profit</label> -->
+                    <%= sh.label :total_profit, 'Total Profit' %>:
+                    <%= sh.text_field :total_profit %><br>
+                  </div>
+                  <div class="form-button">
+                    <%= sh.submit "SUBMIT", :class => "mdl-button mdb-button" %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+
+            <div id="record-label-form" class="mdb-form mdl-tabs__panel"> 
+              <%= form_for(@record_label) do |rl| %>
+                <div class="mdb-individual-fields">
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="labelname">
+                    <label class="mdb-form-field mdl-textfield__label" for="labelname">Record Label Name</label> -->
+                    <%= rl.label :name, 'Record Label Name' %>:
+                    <%= rl.text_field :name %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="founder">
+                    <label class="mdb-form-field mdl-textfield__label" for="founder">Founder</label> -->
+                    <%= rl.label :founder, 'Founder' %>:
+                    <%= rl.text_field :founder %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="location">
+                    <label class="mdb-form-field mdl-textfield__label" for="location">Location</label> -->
+                    <%= rl.label :location, 'Location' %>:
+                    <%= rl.text_field :location %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="ceo">
+                    <label class="mdb-form-field mdl-textfield__label" for="ceo">CEO</label> -->
+                    <%= rl.label :ceo, 'CEO' %>:
+                    <%= rl.text_field :ceo %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="founded">
+                    <label class="mdb-form-field mdl-textfield__label" for="founded">Date Founded (MM/DD/YYYY)</label> -->
+                    <%= rl.label :date_founded, 'Date Founded' %>:
+                    <%= rl.date_select :date_founded, :start_year => 1900, :end_year => 2015, :order => [:month, :day, :year], :default => {:day => 1, :month => 1} %><br>
+                  </div>
+                  <div class="mdb-textfield mdl-textfield mdl-js-textfield">
+                    <!-- <input class="mdl-textfield__input" type="text" id="dissolved">
+                    <label class="mdb-form-field mdl-textfield__label" for="dissolved">Date Dissolved (MM/DD/YYYY)</label> -->
+                    <%= rl.label :date_dissolved, 'Date Dissolved' %>:
+                    <%= rl.date_select :date_dissolved, :start_year => 1900, :end_year => 2015, :order => [:month, :day, :year], :include_blank => true %><br>
+                  </div>
+                  <div class="form-button">
+                    <%= rl.submit "SUBMIT", :class => "mdl-button mdb-button" %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+  </div>
+</body>

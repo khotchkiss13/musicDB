@@ -1,6 +1,7 @@
 class Member < ActiveRecord::Base
+  validates :name, presence: true
   belongs_to :group
-  has_one :individual
+  belongs_to :individual
 
   def name
     self.individual.name
@@ -20,5 +21,9 @@ class Member < ActiveRecord::Base
 
   def vocals
     self.individual.vocals
+  end
+
+  def ind
+    self.individual.id
   end
 end

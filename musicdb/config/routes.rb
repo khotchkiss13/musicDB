@@ -2,6 +2,16 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root 'welcome#index'
 
+  get 'welcome/input'
+  resources :groups
+  resources :individuals
+  resources :record_labels
+  resources :releases
+  resources :shows
+  resources :songs
+  resources :tracks
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
