@@ -7,8 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'rspotify'
 require 'json'
-require 'net/https'
-require 'uri'
+require 'httparty'
+require 'json'
+require 'active_support/core_ext/hash'
+
 individuals = [{name: 'Ed Sheeran', birth_date: '1991-02-17', primary_instrument: 'Guitar', vocals: 'Lead'},
               {name: 'James Hetfield', birth_date: '1963-08-03', primary_instrument: 'Rhythm Guitar', vocals: 'Lead'},
               {name: 'Kirk Hammet', birth_date: '1962-11-18', primary_instrument: 'Lead Guitar', vocals: 'Background'},
@@ -21,8 +23,8 @@ individuals = [{name: 'Ed Sheeran', birth_date: '1991-02-17', primary_instrument
               {name: 'Christopher Maurice Brown', birth_date:'1989-05-05', vocals: 'Lead'},
               {name: 'Donald McKinley Glover', birth_date:'1983-09-25', primary_instrument: 'Vocals'},
               {name: 'Tahliah Debrett Barnett', birth_date: '1988-01-16', primary_instrument: 'Vocals', secondary_instrument:'Synthesizer', vocals: 'Lead'},
-              {name: 'Francis Albert Sinatra', birth_date: '1915-12-12', primary_instrument: 'Vocals'}
-
+              {name: 'Francis Albert Sinatra', birth_date: '1915-12-12', primary_instrument: 'Vocals'},
+              {name: 'Miley Cyrus', birth_date: '1992-11-23', primary_instrument: 'Vocals', secondary_instrument: 'Guitar', vocals: 'Lead'}
               ]
 groups = [{name: 'Ed Sheeran', formation_date: '2005-01-01', disband_date: nil},
           {name: 'Metallica', formation_date: '1981-01-01', disband_date: nil},
@@ -31,7 +33,8 @@ groups = [{name: 'Ed Sheeran', formation_date: '2005-01-01', disband_date: nil},
           {name: 'Chris Brown', formation_date: '2005-11-29', disband_date: nil},
           {name: 'Childish Gambino', formation_date: '2009-09-17', disband_date: nil}
           {name: 'FKA Twigs', formation_date: '2012-12-04', disband_date: nil},
-          {name: 'Frank Sinatra', formation_date: '1939-01-01', disband_date: '1995-12-12'}
+          {name: 'Frank Sinatra', formation_date: '1939-01-01', disband_date: '1995-12-12'},
+          {name: 'Miley Cyrus', formation_date: '2006-03-28', disband_date: nil}
          ]
 
 individuals.each { |person| Individual.create!(person) }
@@ -48,7 +51,8 @@ members = {'Ed Sheeran'=> [{individual_id: Individual.where(name: 'Ed Sheeran').
            'Chris Brown' =>[{individual_id: Individual.where(name: 'Christopher Maurice Brown').first.id, start_date: '2005-11-29', end_date: nil}],
            'Childish Gambino' =>[{individual_id: Individual.where(name: 'Donald McKinley Glover').first.id, start_date: '2009-09-17', end_date: nil}],
            'FKA Twigs' =>[{individual_id: Individual.where(name: 'Tahliah Debrett Barnett').first.id, start_date: '2012-12-04', end_date: nil}],
-           'Frank Sinatra' =>[{individual_id: Individual.where(name: 'Francis Albert Sinatra').first.id, start_date: '1939-01-01', end_date: '1995-12-12'}]
+           'Frank Sinatra' =>[{individual_id: Individual.where(name: 'Francis Albert Sinatra').first.id, start_date: '1939-01-01', end_date: '1995-12-12'}],
+           'Miley Cyrus' => [{individual_id: Individual.where(name: 'Miley Cyrus').first.id, start_date: '2006-03-28', end_date: nil}]
          }
 
 groups.each do |artist|
