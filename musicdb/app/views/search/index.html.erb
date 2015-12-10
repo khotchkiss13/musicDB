@@ -17,10 +17,10 @@
         </div>
         <%= form_tag search_results_path, method: :get do %>
           <%= text_field_tag :q, nil %>
-        <%= end %>
+          <div><%= submit_tag 'Search' %></div>
+        <% end %>
         <!-- <%= search_form_for @q, url: search_results_path do |f| %>
 
-          # Search if the name field contains...
           <%= f.label :name %>
           <%= f.search_field :name %>
 
