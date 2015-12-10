@@ -66,40 +66,44 @@ groups.each do |artist|
       release.tracks.create!({:track_number => t.track_number, :song_id => song.id})
     end
   end
-  response = HTTParty.get("http://api.setlist.fm/rest/0.1/search/setlists",
-  :query => {:artistName => group.name})
-  set = JSON.parse(Hash.from_xml(response.body).to_json)
-  set["setlists"]["setlist"].compact.each do |setlist|
-    if setlist["artist"]["name"] == group.name && !setlist.compact["sets"].nil?
-      show = group.shows.create({:name => setlist["tour"], :venue => setlist["venue"]["name"], :date => setlist["eventDate"]})
-      i = 1
-      setlist.compact["sets"]["set"].each do |set|
-        if !set.respond_to?(:key)
-          if set[1].respond_to?(:key)
-            set = {"song"=>[set[1]]}
-          else
-            set = {"song"=>set[1]}
-          end
-        end
-        if set["song"].respond_to?(:key)
-          set["song"] = [set["song"]]
-        end
-        set["song"].each do |song|
-          db_songs = Song.where(name: song["name"])
-          actual_song = nil
-          db_songs.each do |db_song|
-            if db_song.artist.include?(group.name)
-              actual_song = db_song
-              break
+  page = 1
+  while page < 5
+    response = HTTParty.get("http://api.setlist.fm/rest/0.1/search/setlists",
+    :query => {:artistName => group.name, :p => page})
+    set = JSON.parse(Hash.from_xml(response.body).to_json)
+    set["setlists"]["setlist"].compact.each do |setlist|
+      if setlist["artist"]["name"] == group.name && !setlist.compact["sets"].nil?
+        show = group.shows.create({:name => setlist["tour"], :venue => setlist["venue"]["name"], :date => setlist["eventDate"]})
+        i = 1
+        setlist.compact["sets"]["set"].each do |set|
+          if !set.respond_to?(:key)
+            if set[1].respond_to?(:key)
+              set = {"song"=>[set[1]]}
+            else
+              set = {"song"=>set[1]}
             end
           end
-          if actual_song.nil?
-            actual_song = Song.create(name: song["name"])
+          if set["song"].respond_to?(:key)
+            set["song"] = [set["song"]]
           end
-          show.tracks.create({:track_number => i, :song_id => actual_song.id})
-          i += 1
+          set["song"].each do |song|
+            db_songs = Song.where(name: song["name"])
+            actual_song = nil
+            db_songs.each do |db_song|
+              if db_song.artist.include?(group.name)
+                actual_song = db_song
+                break
+              end
+            end
+            if actual_song.nil?
+              actual_song = Song.create(name: song["name"])
+            end
+            show.tracks.create({:track_number => i, :song_id => actual_song.id})
+            i += 1
+          end
         end
       end
     end
+    page += 1
   end
 end
