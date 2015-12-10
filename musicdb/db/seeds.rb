@@ -29,9 +29,9 @@ individuals = [{name: 'Ed Sheeran', birth_date: '1991-02-17', primary_instrument
 groups = [{name: 'Ed Sheeran', formation_date: '2005-01-01', disband_date: nil},
           {name: 'Metallica', formation_date: '1981-01-01', disband_date: nil},
           {name: 'Eminem', formation_date: '1992-01-01', disband_date: nil},
-          {name: 'Taylor Swift', formation_date: '2006-10-26', disband_date: nil}
+          {name: 'Taylor Swift', formation_date: '2006-10-26', disband_date: nil},
           {name: 'Chris Brown', formation_date: '2005-11-29', disband_date: nil},
-          {name: 'Childish Gambino', formation_date: '2009-09-17', disband_date: nil}
+          {name: 'Childish Gambino', formation_date: '2009-09-17', disband_date: nil},
           {name: 'FKA Twigs', formation_date: '2012-12-04', disband_date: nil},
           {name: 'Frank Sinatra', formation_date: '1939-01-01', disband_date: '1995-12-12'},
           {name: 'Miley Cyrus', formation_date: '2006-03-28', disband_date: nil}
@@ -56,7 +56,7 @@ members = {'Ed Sheeran'=> [{individual_id: Individual.where(name: 'Ed Sheeran').
          }
 
 groups.each do |artist|
-  group = Group.create!(artist) 
+  group = Group.create!(artist)
   members[artist[:name]].each { |member| group.members.create!(member) }
   search = RSpotify::Artist.search(artist[:name]).first
   search.albums.each do |a| # for each of their albums
@@ -70,12 +70,23 @@ groups.each do |artist|
   :query => {:artistName => group.name})
   set = JSON.parse(Hash.from_xml(response.body).to_json)
   set["setlists"]["setlist"].compact.each do |setlist|
-    if setlist["artist"]["name"] == artist && !setlist.compact["sets"].nil?
-      group.shows.create({:name => setlist["tour"], :venue => setlist["venue"]["name"], :date => setlist["eventDate"]})
+    if setlist["artist"]["name"] == group.name && !setlist.compact["sets"].nil?
+      show = group.shows.create({:name => setlist["tour"], :venue => setlist["venue"]["name"], :date => setlist["eventDate"]})
       i = 1
       setlist.compact["sets"]["set"].each do |song|
-        groups.shows.tracks.create({:track_number => i, :song_id => song.id})
+        db_songs = Song.where(name: song["name"])
+        actual_song = nil
+        db_songs.each do |db_song|
+          if db_song.artist == group[name]
+            actual_song = db_song
+            break
+          end
+        end
+        if actual_song.nil?
+          actual_song = Song.create(name: song["name"])
+        end
+        show.tracks.create({:track_number => i, :song_id => actual_song.id})
       end
+    end
   end
 end
-
