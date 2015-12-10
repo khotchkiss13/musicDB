@@ -35,6 +35,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Ruby wrapper for Spotify Web API
 gem 'rspotify'
 
+gem 'httparty'
 gem 'ransack'
 
 group :development, :test do
