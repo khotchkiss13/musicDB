@@ -17,16 +17,8 @@
         </div>
         <%= form_tag search_results_path, method: :get do %>
           <%= text_field_tag :q, nil %>
-        <%= end %>
-        <!-- <%= search_form_for @q, url: search_results_path do |f| %>
-
-          # Search if the name field contains...
-          <%= f.label :name %>
-          <%= f.search_field :name %>
-
-          <%= f.submit %>
-        <% end %> -->
-
+          <div><%= submit_tag 'Search' %></div>
+        <% end %>
         <div class="form-button" style="padding-top: 30px; padding-bottom: 20px; clear: both">
           <a href="results.html" id="submit-button" class="mdl-button mdb-button">SEARCH</a>
         </div>
