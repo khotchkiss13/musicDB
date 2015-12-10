@@ -32,11 +32,11 @@
                 <a href="#show-form" class="mdl-tabs__tab">Show</a>
                 <a href="#record-label-form" class="mdl-tabs__tab">Record Label</a>
               </div>
-            
+
 
             <div class="mdb-line-separator"></div>
 
-            <div id="group-form" class="mdb-form mdl-tabs__panel is-active"> 
+            <div id="group-form" class="mdb-form mdl-tabs__panel is-active">
               <%= form_for(@group) do |g| %>
                 <div class="mdb-individual-fields">
                   <div class="mdb-textfield mdl-textfield mdl-js-textfield">
@@ -139,7 +139,7 @@
               <% end %>
             </div>
 
-            <div id="song-form" class="mdb-form mdl-tabs__panel"> 
+            <div id="song-form" class="mdb-form mdl-tabs__panel">
               <%= form_for(@song) do |s| %>
                 <div class="mdb-individual-fields">
                   <div class="mdb-textfield mdl-textfield mdl-js-textfield">
@@ -174,11 +174,11 @@
                   </div>
                   <div class="mdb-textfield mdl-textfield mdl-js-textfield">
                     <%= s.label :writers, 'Written By' %>:
-                    <%= s.text_field :writers %><br>
+                    <%= s.text_field :writers, :value => ''%><br>
                   </div>
                   <div class="mdb-textfield mdl-textfield mdl-js-textfield">
                     <%= s.label :producers, 'Produced By' %>:
-                    <%= s.text_field :producers %><br>
+                    <%= s.text_field :producers, :value => '' %><br>
                   </div>
                   <div class="form-button">
                     <%= s.submit "SUBMIT", :class => "mdl-button mdb-button" %>
@@ -187,7 +187,7 @@
               <% end %>
             </div>
 
-            <div id="release-form" class="mdb-form mdl-tabs__panel"> 
+            <div id="release-form" class="mdb-form mdl-tabs__panel">
               <%= form_for(@release) do |r| %>
                 <div class="mdb-individual-fields">
                   <div class="mdb-textfield mdl-textfield mdl-js-textfield">
@@ -245,7 +245,7 @@
               <% end %>
             </div>
 
-            <div id="show-form" class="mdb-form mdl-tabs__panel"> 
+            <div id="show-form" class="mdb-form mdl-tabs__panel">
               <%= form_for(@show) do |sh| %>
                 <div class="mdb-individual-fields">
                   <div class="mdb-textfield mdl-textfield mdl-js-textfield">
@@ -283,7 +283,7 @@
               <% end %>
             </div>
 
-            <div id="record-label-form" class="mdb-form mdl-tabs__panel"> 
+            <div id="record-label-form" class="mdb-form mdl-tabs__panel">
               <%= form_for(@record_label) do |rl| %>
                 <div class="mdb-individual-fields">
                   <div class="mdb-textfield mdl-textfield mdl-js-textfield">
