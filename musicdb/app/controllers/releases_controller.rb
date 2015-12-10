@@ -6,12 +6,12 @@ class ReleasesController < ApplicationController
 	def create
 		@release = Release.new(release_params)
 		if !@release.valid?
-			redirect_to welcome_input_path
+			redirect_to input_data_path
 			return
 		end
 
 		if !@release.save
-			redirect_to welcome_input_path
+			redirect_to input_data_path
 			return
 		end
 		redirect_to release_path(@release)

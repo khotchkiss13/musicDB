@@ -6,12 +6,12 @@ class SongsController < ApplicationController
 	def create
 		@song = Song.new(song_params)
 		if !@song.valid?
-			redirect_to welcome_input_path
+			redirect_to input_data_path
 			return
 		end
 
 		if !@song.save
-			redirect_to welcome_input_path
+			redirect_to input_data_path
 			return
 		end
 		redirect_to song_path(@song)

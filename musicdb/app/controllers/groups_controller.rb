@@ -6,12 +6,12 @@ class GroupsController < ApplicationController
 	def create
 		@group = Group.new(group_params)
 		if !@group.valid?
-			redirect_to welcome_input_path
+			redirect_to input_data_path
 			return
 		end
 
 		if !@group.save
-			redirect_to welcome_input_path
+			redirect_to input_data_path
 			return
 		end
 		redirect_to group_path(@group)
