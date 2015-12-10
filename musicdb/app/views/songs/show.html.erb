@@ -32,6 +32,13 @@
           <%= link_to producer.name, individual_path(producer), :class => "mdb-section-link" %><br>
         <% end %>
 
+        <div class="mdb-section-info">Tracks in releases:</div>
+        <% @song.tracks.each do |track| %>
+          <% if !track.release.nil? %>
+            <%= link_to track.release.name, release_path(track.release_id), :class => "mdb-section-link" %><br>
+          <% end %>
+        <% end %>
+
       </div>
         
     </div>

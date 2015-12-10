@@ -33,6 +33,9 @@
           <%= link_to producer.name, individual_path(producer), :class => "mdb-section-link" %><br>
         <% end %>
 
+        <div class="mdb-section-info">Song Page</div>
+        <%= link_to @track.song.name, song_path(@track.song_id), :class => "mdb-section-link" %>
+
       </div>
         
     </div>

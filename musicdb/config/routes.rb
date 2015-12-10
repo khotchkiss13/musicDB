@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'input/data' => 'input#data'
   get 'search/advanced' => 'search#advanced'
   get 'search/results' => 'search#results'
+  get 'search/advanced_results' => 'search#advanced_results'
   resources :groups
   resources :individuals
   resources :record_labels

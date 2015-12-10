@@ -1,0 +1,226 @@
+<body bgcolor="#f5f5f5">
+
+	<div class="mdl-grid">
+	    <div class="mdl-layout__content">
+	      <a name="top"></a>
+
+	       <div class="mdb-input-form">
+            <div class="mdb-form-title mdl-typography--text-uppercase" style="margin-bottom: 0px">Advanced Search</div>
+
+            <%= form_tag search_advanced_results_path, method: :get do %>
+                <div class="mdb-search-elements" style="margin-bottom: 10px"> 
+                    <%= select_tag 'num_comp1', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'group_field1', options_for_select(Group.column_names), :include_blank => 'Group' %>
+                     <%= text_field_tag :q1, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'cond1', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp2', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'group_field2', options_for_select(Group.column_names), :include_blank => 'Group' %>
+                     <%= text_field_tag :q2, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'cond2', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp3', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'group_field3', options_for_select(Group.column_names), :include_blank => 'Group' %>
+                     <%= text_field_tag :q3, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'cond3', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp4', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'ind_field1', options_for_select(Individual.column_names), :include_blank => 'Individual' %>
+                     <%= text_field_tag :q4, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp5', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'ind_field2', options_for_select(Individual.column_names), :include_blank => 'Individual' %>
+                     <%= text_field_tag :q5, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp6', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'ind_field3', options_for_select(Individual.column_names), :include_blank => 'Individual' %>
+                    <%= text_field_tag :q6, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                    <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp7', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'ind_field4', options_for_select(Individual.column_names), :include_blank => 'Individual' %>
+                     <%= text_field_tag :q7, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp8', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'ind_field5', options_for_select(Individual.column_names), :include_blank => 'Individual' %>
+                     <%= text_field_tag :q8, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp9', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'song_field1', options_for_select(Song.column_names), :include_blank => 'Song' %>
+                     <%= text_field_tag :q9, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp10', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'song_field2', options_for_select(Song.column_names), :include_blank => 'Song' %>
+                     <%= text_field_tag :q10, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp11', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'song_field3', options_for_select(Song.column_names), :include_blank => 'Song' %>
+                     <%= text_field_tag :q11, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'song_field4', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'group_field', options_for_select(Song.column_names), :include_blank => 'Song' %>
+                     <%= text_field_tag :q12, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp13', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'song_field5', options_for_select(Song.column_names), :include_blank => 'Song' %>
+                     <%= text_field_tag :q13, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp14', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'release_field1', options_for_select(Release.column_names), :include_blank => 'Release' %>
+                     <%= text_field_tag :q14, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp15', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'release_field2', options_for_select(Release.column_names), :include_blank => 'Release' %>
+                     <%= text_field_tag :q15, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp16', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'release_field3', options_for_select(Release.column_names), :include_blank => 'Release' %>
+                     <%= text_field_tag :q16, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp17', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'release_field4', options_for_select(Release.column_names), :include_blank => 'Release' %>
+                     <%= text_field_tag :q17, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp18', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'release_field5', options_for_select(Release.column_names), :include_blank => 'Release' %>
+                     <%= text_field_tag :q18, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp19', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'release_field6', options_for_select(Release.column_names), :include_blank => 'Release' %>
+                     <%= text_field_tag :q19, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp20', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'release_field7', options_for_select(Release.column_names), :include_blank => 'Release' %>
+                     <%= text_field_tag :q20, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp21', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'release_field8', options_for_select(Release.column_names), :include_blank => 'Release' %>
+                     <%= text_field_tag :q21, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp22', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'show_field1', options_for_select(Show.column_names), :include_blank => 'Show' %>
+                     <%= text_field_tag :q22, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp23', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'show_field2', options_for_select(Show.column_names), :include_blank => 'Show' %>
+                     <%= text_field_tag :q23, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp24', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'show_field3', options_for_select(Show.column_names), :include_blank => 'Show' %>
+                     <%= text_field_tag :q24, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp25', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'show_field4', options_for_select(Show.column_names), :include_blank => 'Show' %>
+                     <%= text_field_tag :q25, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp26', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'show_field5', options_for_select(Show.column_names), :include_blank => 'Show' %>
+                     <%= text_field_tag :q26, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp27', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'show_field6', options_for_select(Show.column_names), :include_blank => 'Show' %>
+                     <%= text_field_tag :q27, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+
+
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp28', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'label_field1', options_for_select(RecordLabel.column_names), :include_blank => 'Record Label' %>
+                     <%= text_field_tag :q28, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp29', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'label_field2', options_for_select(RecordLabel.column_names), :include_blank => 'Record Label' %>
+                     <%= text_field_tag :q29, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp30', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'label_field3', options_for_select(RecordLabel.column_names), :include_blank => 'Record Label' %>
+                     <%= text_field_tag :q30, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp31', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'label_field4', options_for_select(RecordLabel.column_names), :include_blank => 'Record Label' %>
+                     <%= text_field_tag :q31, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp32', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'label_field5', options_for_select(RecordLabel.column_names), :include_blank => 'Record Label' %>
+                     <%= text_field_tag :q32, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 <div class="mdb-search-elements" style="margin-top: 10px"> 
+                    <%= select_tag 'num_comp33', options_for_select(["", "=", "<", ">"]) %>
+                    <%= select_tag 'label_field6', options_for_select(RecordLabel.column_names), :include_blank => 'Record Label' %>
+                     <%= text_field_tag :q33, nil , :placeholder => "Search musicDB", :class => "search-container", :style => "padding-left: 20px" %>
+                     <%= select_tag 'condition', options_for_select(["and", "and not", "or"]) %>
+                 </div>
+                 
+            <div class="form-button" style="padding-top: 30px; padding-bottom: 20px; clear: both">
+              <div><%= submit_tag 'SEARCH', :class => "mdl-button mdb-button", :style => "margin: 0 auto" %>
+              </div>
+            </div>
+            <% end %>
+
+          </div>
+	    </div>
+	</div>
+
+  </body>
