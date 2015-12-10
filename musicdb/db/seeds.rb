@@ -56,17 +56,26 @@ members = {'Ed Sheeran'=> [{individual_id: Individual.where(name: 'Ed Sheeran').
          }
 
 groups.each do |artist|
-  group = Group.create!(artist)
+  group = Group.create!(artist) 
   members[artist[:name]].each { |member| group.members.create!(member) }
   search = RSpotify::Artist.search(artist[:name]).first
-  search.albums.each do |a|
+  search.albums.each do |a| # for each of their albums
     release = Release.create!({:name => a.name, :date => a.release_date})
-    a.tracks.each do |t|
+    a.tracks.each do |t| # for each of their tracks
       song = Song.create!({:name => t.name, :genre => a.genres, :length => t.duration_ms, :bpm => nil, :medium => nil})
       release.tracks.create!({:track_number => t.track_number, :song_id => song.id})
     end
   end
+  response = HTTParty.get("http://api.setlist.fm/rest/0.1/search/setlists",
+  :query => {:artistName => group.name})
+  set = JSON.parse(Hash.from_xml(response.body).to_json)
+  set["setlists"]["setlist"].compact.each do |setlist|
+    if setlist["artist"]["name"] == artist && !setlist.compact["sets"].nil?
+      group.shows.create({:name => setlist["tour"], :venue => setlist["venue"]["name"], :date => setlist["eventDate"]})
+      i = 1
+      setlist.compact["sets"]["set"].each do |song|
+        groups.shows.tracks.create({:track_number => i, :song_id => song.id})
+      end
+  end
 end
 
-groups.each do |artist|
-  artist.name
