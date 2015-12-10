@@ -25,6 +25,7 @@ individuals = [{name: 'Ed Sheeran', birth_date: '1991-02-17', primary_instrument
               {name: 'Tahliah Debrett Barnett', birth_date: '1988-01-16', primary_instrument: 'Vocals', secondary_instrument:'Synthesizer', vocals: 'Lead'},
               {name: 'Francis Albert Sinatra', birth_date: '1915-12-12', primary_instrument: 'Vocals'},
               {name: 'Miley Cyrus', birth_date: '1992-11-23', primary_instrument: 'Vocals', secondary_instrument: 'Guitar', vocals: 'Lead'}
+              ]
 
 groups = [{name: 'Ed Sheeran', formation_date: '2005-01-01', disband_date: nil},
           {name: 'Metallica', formation_date: '1981-01-01', disband_date: nil},
@@ -73,7 +74,7 @@ groups.each do |artist|
     set = JSON.parse(Hash.from_xml(response.body).to_json)
     set["setlists"]["setlist"].compact.each do |setlist|
       if setlist["artist"]["name"] == group.name && !setlist.compact["sets"].nil?
-        show = group.shows.create({:name => setlist["tour"], :venue => setlist["venue"]["name"], :date => setlist["eventDate"]})
+        show = group.shows.create({:name => (setlist["venue"]["city"]["name"].to_s + ", " + setlist["venue"]["city"]["state"].to_json), :venue => setlist["venue"]["name"], :date => setlist["eventDate"]})
         i = 1
         setlist.compact["sets"]["set"].each do |set|
           if !set.respond_to?(:key)
