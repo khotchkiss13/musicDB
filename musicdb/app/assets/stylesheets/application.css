@@ -385,7 +385,7 @@ a img{
   }
 
 .mdb-results-tabs {
-  padding-top: 8px;
+  padding-top: 20px;
 }
   .mdb-results-tabs .mdl-tabs__tab {
     font-size: 14px;
@@ -594,6 +594,7 @@ a img{
 }
 
   .mdb-info-title .mdb-large-text {
+    padding-top: 5px;
     margin-bottom: 5px;
   }
 

@@ -12,4 +12,13 @@ class Song < ActiveRecord::Base
     end
     return "None"
   end
+
+  def song_length
+    t = self.length * 0.001
+    if t < 3600
+      return Time.at(t).utc.strftime("%M:%S")
+    end
+    return Time.at(t).utc.strftime("%H:%M:%S")
+  end
+
 end

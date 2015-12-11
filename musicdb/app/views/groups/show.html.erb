@@ -13,12 +13,12 @@
             <div class="mdb-section-title mdl-typography--text-uppercase">About</div>
             <div class="mdb-section-info">Formation Date:</div>
             <div class="mdb-section-desc"><%= @group.formation_date.to_formatted_s(:long) %></div>
-            <div class="mdb-section-info">Disband Date:</div>
             <% if !@group.disband_date.nil? %>
-                <div class="mdb-section-desc"><%= @group.disband_date.to_formatted_s(:long) %></div>
+                <div class="mdb-section-info">Disband Date:</div>
+                    <div class="mdb-section-desc"><%= @group.disband_date.to_formatted_s(:long) %></div>
             <% end %>
 
-            <div class="mdb-section-title mdl-typography--text-uppercase" style="margin-top: 35px">Other</div>
+            <!-- <div class="mdb-section-title mdl-typography--text-uppercase" style="margin-top: 35px">Other</div> -->
             <div class="mdb-section-info">Members:</div>
             <% @members.each do |member| %>
                 <%= link_to member.name, individual_path(member.ind), :class => "mdb-section-link" %><br>
@@ -30,13 +30,17 @@
                 <%= link_to release.name, release_path(release), :class => "mdb-section-link" %><br>
             <% end %>
 
-            <div class="mdb-section-info">Shows:</div>
-            <% @group.shows.each do |show| %>
-                <%= link_to show.name, show_path(show), :class => "mdb-section-link" %><br>
+            <% if !@group.shows.nil? %>
+                <div class="mdb-section-info">Shows:</div>
+                <% @group.shows.each do |show| %>
+                    <%= link_to show.name, show_path(show), :class => "mdb-section-link" %><br>
+                <% end %>
             <% end %>
-            <div class="mdb-section-info">Distributed by:</div>
-            <% @group.labels.each do |label| %>
-                <%= link_to label.name, record_label_path(label), :class => "mdb-section-link" %><br>
+            <% if !@group.labels.nil? %>
+                <div class="mdb-section-info">Distributed by:</div>
+                <% @group.labels.each do |label| %>
+                    <%= link_to label.name, record_label_path(label), :class => "mdb-section-link" %><br>
+                <% end %>
             <% end %>
 
           </div>

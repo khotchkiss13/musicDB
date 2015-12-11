@@ -15,27 +15,38 @@
             <%= link_to @release.group.name, group_path(@release.group), :class => "mdb-section-link" %><br>
             <div class="mdb-section-info">Release date:</div>
             <div class="mdb-section-desc"><%= @release.date.to_formatted_s(:long) %></div>
-            <div class="mdb-section-info">Distributed by:</div>
             <% if !@release.record_label.nil? %>
+                <div class="mdb-section-info">Distributed by:</div>
                 <%= link_to @release.record_label.name, record_label_path(@release.record_label), :class => "mdb-section-link" %><br>
             <% end %>
-            <div class="mdb-section-info">Media Type:</div>
-            <div class="mdb-section-desc"><%= @release.media_type %></div>
-            <div class="mdb-section-info">Total Length:</div>
-            <div class="mdb-section-desc"><%= @release.total_length.to_s %></div>
-            <div class="mdb-section-info">Copies Sold:</div>
-            <div class="mdb-section-desc"><%= @release.copies_sold.to_s %></div>
-            <div class="mdb-section-info">Total Profit:</div>
-            <div class="mdb-section-desc"><%= @release.total_profit.to_s %></div>
-            <div class="mdb-section-info">Medium:</div>
-            <div class="mdb-section-desc"><%= @release.medium %></div>
-            <div class="mdb-section-info">Certification:</div>
-            <div class="mdb-section-desc"><%= @release.certification %></div>
-
+            <% if !@release.media_type.nil? %>
+                <div class="mdb-section-info">Media Type:</div>
+                <div class="mdb-section-desc"><%= @release.media_type %></div>
+            <% end %>
+            <% if !@release.total_length.nil? %>
+                <div class="mdb-section-info">Total Length:</div>
+                <div class="mdb-section-desc"><%= @release.total_length.to_s %></div>
+            <% end %>
+            <% if !@release.copies_sold.nil? %>
+                <div class="mdb-section-info">Copies Sold:</div>
+                <div class="mdb-section-desc"><%= @release.copies_sold.to_s %></div>
+            <% end %>
+            <% if !@release.total_profit.nil? %>
+                <div class="mdb-section-info">Total Profit:</div>
+                <div class="mdb-section-desc"><%= @release.total_profit.to_s %></div>
+            <% end %>
+            <% if !@release.medium.nil? %>
+                <div class="mdb-section-info">Medium:</div>
+                <div class="mdb-section-desc"><%= @release.medium %></div>
+            <% end %>
+            <% if !@release.certification.nil? %>
+                <div class="mdb-section-info">Certification:</div>
+                <div class="mdb-section-desc"><%= @release.certification %></div>
+            <% end %>
             <div class="mdb-section-title mdl-typography--text-uppercase" style="margin-top: 35px">Other</div>
             <div class="mdb-section-info">Track List:</div>
             <% @tracks.each do |track| %>
-                <%= link_to track.name, track_path(track), :class => "mdb-section-link" %><br>
+                <%= link_to (track.track_number.to_s+". "+track.name), song_path(track.song), :class => "mdb-section-link" %><br>
             <% end %>
             
             <%= link_to "+ Add Track", '/input/trackinput', :class => "mdb-add-link", :method => :get %>

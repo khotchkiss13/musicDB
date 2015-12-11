@@ -6,7 +6,7 @@
 
           <div class="mdb-input-form">
 
-            <div class="mdb-results-search">
+            <!-- <div class="mdb-results-search">
               <div class="search-box">
                   <div class="search-container">
                     <input type="search" id="search" placeholder="Search musicDB" />
@@ -17,8 +17,7 @@
                 <a href="results.html" id="submit-button" class="mdl-button mdb-button">SEARCH</a>
               </div>
             </div>
-            <a class="mdb-link" href="advsearch.html" style="float: right; margin-right: 105px; margin-top: -13px">Advanced Search</a>
-
+            <a class="mdb-link" href="advsearch.html" style="float: right; margin-right: 105px; margin-top: -13px">Advanced Search</a> -->
             <div class="mdb-results-tabs mdl-tabs mdl-js-tabs">
               <div class="mdl-tabs__tab-bar">
                 <a href="#group-form" class="mdl-tabs__tab is-active">Group</a>
@@ -39,6 +38,8 @@
                   </div>
                 <% end %>
               <% end %>
+              <% if @groups.nil? %>
+              <% end %>
             </div>
 
             <div id="individual-form" class="mdb-form mdl-tabs__panel"> 
@@ -46,7 +47,7 @@
                 <% @individuals.each do |individual| %>
                   <div class="mdb-result">
                     <%= link_to individual.name, individual_path(individual), :class => "mdb-result-title" %>
-                    <div class="mdb-result-id">Artist ID: <%= individual.id %></div>
+                    <div class="mdb-result-id">Individual ID: <%= individual.id %></div>
                   </div>
                 <% end %>
               <% end %>

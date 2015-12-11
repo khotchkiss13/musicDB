@@ -24,7 +24,8 @@ individuals = [{name: 'Ed Sheeran', birth_date: '1991-02-17', primary_instrument
               {name: 'Donald McKinley Glover', birth_date:'1983-09-25', primary_instrument: 'Vocals'},
               {name: 'Tahliah Debrett Barnett', birth_date: '1988-01-16', primary_instrument: 'Vocals', secondary_instrument:'Synthesizer', vocals: 'Lead'},
               {name: 'Francis Albert Sinatra', birth_date: '1915-12-12', primary_instrument: 'Vocals'},
-              {name: 'Miley Cyrus', birth_date: '1992-11-23', primary_instrument: 'Vocals', secondary_instrument: 'Guitar', vocals: 'Lead'}
+              {name: 'Miley Cyrus', birth_date: '1992-11-23', primary_instrument: 'Vocals', secondary_instrument: 'Guitar', vocals: 'Lead'},
+              {name: 'Justin Bieber', birth_date: '1994-03-01', primary_instrument: 'Guitar', vocals: 'Lead'}
               ]
 
 groups = [{name: 'Ed Sheeran', formation_date: '2005-01-01', disband_date: nil},
@@ -35,7 +36,8 @@ groups = [{name: 'Ed Sheeran', formation_date: '2005-01-01', disband_date: nil},
           {name: 'Childish Gambino', formation_date: '2009-09-17', disband_date: nil},
           {name: 'FKA Twigs', formation_date: '2012-12-04', disband_date: nil},
           {name: 'Frank Sinatra', formation_date: '1939-01-01', disband_date: '1995-12-12'},
-          {name: 'Miley Cyrus', formation_date: '2006-03-28', disband_date: nil}
+          {name: 'Miley Cyrus', formation_date: '2006-03-28', disband_date: nil},
+          {name: 'Justin Bieber', formation_date: '2008-01-01', disband_date: nil}
          ]
 
 individuals.each { |person| Individual.create!(person) }
@@ -53,8 +55,18 @@ members = {'Ed Sheeran'=> [{individual_id: Individual.where(name: 'Ed Sheeran').
            'Childish Gambino' =>[{individual_id: Individual.where(name: 'Donald McKinley Glover').first.id, start_date: '2009-09-17', end_date: nil}],
            'FKA Twigs' =>[{individual_id: Individual.where(name: 'Tahliah Debrett Barnett').first.id, start_date: '2012-12-04', end_date: nil}],
            'Frank Sinatra' =>[{individual_id: Individual.where(name: 'Francis Albert Sinatra').first.id, start_date: '1939-01-01', end_date: '1995-12-12'}],
-           'Miley Cyrus' => [{individual_id: Individual.where(name: 'Miley Cyrus').first.id, start_date: '2006-03-28', end_date: nil}]
+           'Miley Cyrus' => [{individual_id: Individual.where(name: 'Miley Cyrus').first.id, start_date: '2006-03-28', end_date: nil}],
+           'Justin Bieber' => [{individual_id: Individual.where(name: 'Justin Bieber').first.id, start_date: '2008-01-01', end_date: nil}]          
          }
+
+record_labels = [{name: 'Asylum Records', founder: 'David Geffen', location: 'United States', ceo: 'David Geffen', date_founded: '1971-01-01', date_dissolved: nil},
+                 {name: 'Elektra Records', founder: 'Jac Holzman', location: 'United States', ceo: 'Jeff Castelaz', date_founded: '1950-01-01', date_dissolved: nil},
+                 {name: 'Megaforce Records', founder: 'Jon Zazula', location: 'New York City, New York, United States', ceo: 'Jon Zazula', date_founded: '1950-01-01', date_dissolved: nil},
+                 {name: 'Warner Bros. Records', founder: 'Albert Warner', location: 'Burbank, California, United States', ceo: 'Cameron Strang', date_founded: '1958-03-19', date_dissolved: nil},
+                 {name: 'Shady Records', founder: 'Eminem', location: 'New York City, New York, United States', ceo: 'Eminem', date_founded: '1999-01-01', date_dissolved: nil}   
+          ]
+
+record_labels.each { |label| RecordLabel.create!(label) }
 
 groups.each do |artist|
   group = Group.create!(artist)
@@ -63,7 +75,7 @@ groups.each do |artist|
   search.albums.each do |a| # for each of their albums
     release = group.releases.create!({:name => a.name, :date => a.release_date})
     a.tracks.each do |t| # for each of their tracks
-      song = Song.create!({:name => t.name, :genre => a.genres, :length => t.duration_ms, :bpm => nil, :medium => nil})
+      song = Song.create!({:name => t.name, :genre => a.genres.first, :length => t.duration_ms, :bpm => nil, :medium => nil})
       release.tracks.create!({:track_number => t.track_number, :song_id => song.id})
     end
   end

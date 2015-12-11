@@ -6,7 +6,7 @@
         <div class="mdb-input-form">
           <div class="mdb-info-title">
             <div class="mdb-large-text"><%= @individual.name %></div>
-            <div class="mdb-result-id">Artist ID: <%= @individual.id %></div>
+            <div class="mdb-result-id">Individual ID: <%= @individual.id %></div>
           </div>
           <div class="mdb-line-separator" style="margin-top: 10px; margin-bottom: 30px"></div>
           <div class="mdb-info-sections">
@@ -16,7 +16,12 @@
             <div class="mdb-section-info">Primary Instrument:</div>
             <div class="mdb-section-desc"><%= @individual.primary_instrument %></div>
             <div class="mdb-section-info">Secondary Instrument:</div>
-            <div class="mdb-section-desc"><%= @individual.secondary_instrument %></div>
+            <% if !@individual.secondary_instrument.nil? %>
+                <div class="mdb-section-desc"><%= @individual.secondary_instrument %></div>
+            <% end %>
+            <% if @individual.secondary_instrument.nil? %>
+                <div class="mdb-section-desc">None</div>
+            <% end %>
             <div class="mdb-section-info">Vocals:</div>
             <div class="mdb-section-desc"><%= @individual.vocals %></div>
 
@@ -27,13 +32,22 @@
             <% end %>
 
             <div class="mdb-section-info">Songs written:</div>
-            <% @individual.written_songs.each do |written_song| %>
-                <%= link_to written_song.name, song_path(written_song), :class => "mdb-section-link" %><br>
+            <% if !@individual.written_songs.nil? %>
+                <% @individual.written_songs.each do |written_song| %>
+                    <%= link_to written_song.name, song_path(written_song), :class => "mdb-section-link" %><br>
+                <% end %>
             <% end %>
-
+            <% if @individual.written_songs.nil? %>
+                <div class="mdb-section-desc">None</div>
+            <% end %>
             <div class="mdb-section-info">Songs produced:</div>
-            <% @individual.produced_songs.each do |produced_song| %>
-                <%= link_to produced_song.name, song_path(produced_song), :class => "mdb-section-link" %><br>
+            <% if !@individual.produced_songs.nil? %>
+                <% @individual.produced_songs.each do |produced_song| %>
+                    <%= link_to produced_song.name, song_path(produced_song), :class => "mdb-section-link" %><br>
+                <% end %>
+            <% end %>
+            <% if @individual.produced_songs.nil? %>
+                <div class="mdb-section-desc">None</div>
             <% end %>
 
           </div>
