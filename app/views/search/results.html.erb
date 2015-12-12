@@ -7,7 +7,7 @@
           <div class="mdb-input-form">
 
             <div class="mdb-results-search">
-              <div class="search-box">
+              <!-- <div class="search-box">
                   <div class="search-container">
                     <input type="search" id="search" placeholder="Search musicDB" />
                   </div>
@@ -16,8 +16,8 @@
               <div class="form-button" style="padding-top: 30px; padding-bottom: 20px; clear: both">
                 <a href="results.html" id="submit-button" class="mdl-button mdb-button">SEARCH</a>
               </div>
-            </div>
-            <a class="mdb-link" href="advsearch.html" style="float: right; margin-right: 105px; margin-top: -13px">Advanced Search</a>
+            </div> -->
+            <!-- <a class="mdb-link" href="advsearch.html" style="float: right; margin-right: 105px; margin-top: -13px">Advanced Search</a> -->
 
             <div class="mdb-results-tabs mdl-tabs mdl-js-tabs">
               <div class="mdl-tabs__tab-bar">
@@ -41,7 +41,7 @@
               <% end %>
             </div>
 
-            <div id="individual-form" class="mdb-form mdl-tabs__panel"> 
+            <div id="individual-form" class="mdb-form mdl-tabs__panel">
               <% if !@individuals.nil? %>
                 <% @individuals.each do |individual| %>
                   <div class="mdb-result">
@@ -52,7 +52,7 @@
               <% end %>
             </div>
 
-            <div id="song-form" class="mdb-form mdl-tabs__panel"> 
+            <div id="song-form" class="mdb-form mdl-tabs__panel">
               <% if !@songs.nil? %>
                 <% @songs.each do |song| %>
                   <div class="mdb-result">
@@ -68,7 +68,7 @@
               <% end %>
             </div>
 
-            <div id="release-form" class="mdb-form mdl-tabs__panel"> 
+            <div id="release-form" class="mdb-form mdl-tabs__panel">
               <% if !@releases.nil? %>
                 <% @releases.each do |release| %>
                   <div class="mdb-result">
@@ -79,7 +79,7 @@
               <% end %>
             </div>
 
-            <div id="show-form" class="mdb-form mdl-tabs__panel"> 
+            <div id="show-form" class="mdb-form mdl-tabs__panel">
               <% if !@shows.nil? %>
                 <% @shows.each do |show| %>
                   <div class="mdb-result">
@@ -90,7 +90,7 @@
               <% end %>
             </div>
 
-            <div id="record-label-form" class="mdb-form mdl-tabs__panel"> 
+            <div id="record-label-form" class="mdb-form mdl-tabs__panel">
               <% if !@labels.nil? %>
                 <% @labels.each do |label| %>
                   <div class="mdb-result">

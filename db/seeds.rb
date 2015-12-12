@@ -166,7 +166,8 @@ groups.each do |artist|
     if set["setlists"]["setlist"].respond_to?(:each)
       set["setlists"]["setlist"].compact.each do |setlist|
         if setlist["artist"]["name"] == group.name && !setlist.compact["sets"].nil?
-          show = group.shows.create({:name => (setlist["venue"]["city"]["name"].to_s + ", " + setlist["venue"]["city"]["state"].to_json), :venue => setlist["venue"]["name"], :date => setlist["eventDate"]})
+          show = group.shows.create({:name => (setlist["venue"]["city"]["name"].to_s + ", " + setlist["venue"]["city"]["state"].to_json),
+                              :venue => setlist["venue"]["name"], :date => setlist["eventDate"]})
           i = 1
           if setlist.compact["sets"]["set"].respond_to?(:each)
             setlist.compact["sets"]["set"].each do |set|

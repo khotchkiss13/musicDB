@@ -49,6 +49,6 @@ class SearchController < ApplicationController
       @songs = Song.ransack(name_cont: q10).result
     end
 
-    render :results.filter()
+    render :results
   end
 end
